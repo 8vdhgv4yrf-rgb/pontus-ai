@@ -1,5 +1,5 @@
 // index.js – backend with OpenAI + Azure SQL (ClaimsDB)
-
+//Test of github
 require("dotenv").config();
 const express = require("express");
 const OpenAI = require("openai");
