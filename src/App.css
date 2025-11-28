@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  font-size: 16px;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background: #0078d4;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+.answer-box {
+  margin-top: 2rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 200px;
+  border: 1px solid #ddd;
+}
+
