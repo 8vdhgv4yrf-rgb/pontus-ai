@@ -28,7 +28,8 @@ const dbConfig = {
 
 const pool = mysql.createPool(dbConfig);
 
-console.log("DB CONFIG:", dbConfig);
+const { password, ...safeDbConfig } = dbConfig;
+console.log("DB CONFIG:", safeDbConfig);
 // ---------- Helper: build structured claim text from DB row ----------
 
 const CLAIM_FIELDS = [
@@ -125,7 +126,12 @@ app.get("/test-db", async (req, res) => {
     const [rows] = await pool.query("SELECT COUNT(*) AS cnt FROM Claims");
     res.json({ ok: true, claims_count: rows[0].cnt });
   } catch (err) {
-    console.error("DB test error:", err);
+    console.error("DB test error:", {
+  name: err.name,
+  message: err.message,
+  status: err.status,
+  code: err.code,
+});
     res.status(500).json({ ok: false, error: err.message });
   }
 });
@@ -178,7 +184,13 @@ Return the result in three clear sections: Summary, MissingInformation, Suggeste
       raw_result: text,
     });
   } catch (err) {
-    console.error("Error in /claim-summary:", err);
+    console.error("Error in /claim-summary:", {
+  name: err.name,
+  message: err.message,
+  status: err.status,
+  code: err.code,
+});
+
     res.status(500).json({ error: "Server error" });
   }
 });
@@ -231,7 +243,12 @@ Question: ${prompt}
     const text = response.choices[0].message.content;
     res.json({ answer: text });
   } catch (err) {
-    console.error("AI error in /ask:", err);
+    console.error("AI error in /ask:", {
+  name: err.name,
+  message: err.message,
+  status: err.status,
+  code: err.code,
+});
     res.status(500).json({ error: "AI server error" });
   }
 });
@@ -284,7 +301,12 @@ Return the result in three clear sections: Summary, MissingInformation, Suggeste
       raw_result: text,
     });
   } catch (err) {
-    console.error("Error in /claim-summary:", err);
+    console.error("Error in /claim-summary:", {
+  name: err.name,
+  message: err.message,
+  status: err.status,
+  code: err.code,
+});
     res.status(500).json({ error: "Server error" });
   }
 });

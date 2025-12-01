@@ -2,6 +2,7 @@
   "name": "pontus-ai",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5001",
   "dependencies": {
     "cors": "^2.8.5",
     "cra-template-pwa": "2.0.0",
