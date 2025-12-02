@@ -1,3 +1,4 @@
+```mermaid
 flowchart TD
     Dev[Win11 + WSL\nReact / Node Dev]
     GitHub[GitHub Repo]
@@ -31,3 +32,4 @@ flowchart TD
     Apache --> WP
     WP --> DB
     Dev -->|DB connect 3307| DB
+```
