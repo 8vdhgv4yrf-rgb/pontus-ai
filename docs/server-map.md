@@ -1,3 +1,5 @@
+```md
+```mermaid
 flowchart TD
     Dev[Win11 + WSL\nReact / Node Dev]
     GitHub[GitHub Repo]
