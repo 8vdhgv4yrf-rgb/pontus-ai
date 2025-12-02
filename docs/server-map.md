@@ -14,6 +14,7 @@ flowchart TD
         Apache[Apache\n:8081]
         Node[Node.js\n:3000]
         WP[WordPress]
+        Ollama[Ollama\nllama3 :11434]
         DB[(MariaDB\n:3306 internal\n:3307 dev access)]
     end
 
@@ -24,6 +25,7 @@ flowchart TD
     UFW --> Apache
     UFW --> Node
     UFW --> DB
+    UFW -->|SSH 22| Server
 
     F2B --> UFW
 
@@ -31,5 +33,7 @@ flowchart TD
     Nginx --> Node
     Apache --> WP
     WP --> DB
+
+    Node -->|LLM HTTP API\nhttp://127.0.0.1:11434| Ollama
     Dev -->|DB connect 3307| DB
 ```
