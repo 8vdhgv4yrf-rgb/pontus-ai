@@ -1,4 +1,3 @@
-```md
 ```mermaid
 flowchart TD
     Dev[Win11 + WSL\nReact / Node Dev]
@@ -20,3 +19,4 @@ flowchart TD
     Apache --> WP
     WP --> DB
     Dev -->|DB connect| DB
+```
