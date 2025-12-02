@@ -1,7 +1,12 @@
-```mermaid
 flowchart TD
     Dev[Win11 + WSL\nReact / Node Dev]
     GitHub[GitHub Repo]
+    Internet((Internet))
+
+    subgraph Security[Server Security Layer]
+        UFW[UFW Firewall\n:80 :443 :22 :3307]
+        F2B[Fail2ban\nSSH / Nginx / Apache]
+    end
 
     subgraph Server[apelsin1 @ GleSYS]
         Nginx[Nginx\n:80 / :443]
@@ -14,9 +19,15 @@ flowchart TD
     Dev -->|git push| GitHub
     GitHub -->|git pull| Server
 
+    Internet --> UFW --> Nginx
+    UFW --> Apache
+    UFW --> Node
+    UFW --> DB
+
+    F2B --> UFW
+
     Nginx --> Apache
     Nginx --> Node
     Apache --> WP
     WP --> DB
-    Dev -->|DB connect| DB
-```
+    Dev -->|DB connect 3307| DB
